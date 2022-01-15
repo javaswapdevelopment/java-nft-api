@@ -3,12 +3,20 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/api/tokens",
-      "destination": "/api/tokens"
+      "source": "/api/collections",
+      "destination": "/api/collections"
     },
     {
-      "source": "/api/tokens/:address",
-      "destination": "/api/tokens/tokens"
+      "source": "/api/collections/:address",
+      "destination": "/api/collections/scope"
+    },
+    {
+      "source": "/api/collections/:address/tokens",
+      "destination": "/api/collections/tokens"
+    },
+    {
+      "source": "/api/collections/:address/distribution",
+      "destination": "/api/collections/distribution"
     }
   ],
   "headers": [

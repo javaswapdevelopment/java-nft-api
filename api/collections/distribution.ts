@@ -1,7 +1,9 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import { getTokenByAddress } from "../../utils";
 import { return200, return400, return500 } from "../../utils/response";
+import contracts from "../../utils/constants/contracts";
+import { getInfoNFTContract, getTokenInfo } from "../../utils";
 import { getAddress } from "@ethersproject/address";
+import { filterByString } from "../../utils/filter";
 
 export default async function (req: VercelRequest, res: VercelResponse): Promise<void> {
   if (
@@ -14,19 +16,8 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
   }
 
   try {
-    const address = getAddress(req.query.address);
-    const token = await getTokenByAddress(address.toLowerCase());
-
-    return200(res, {
-      updated_at: new Date().getTime(),
-      data: {
-        name: token?.name,
-        symbol: token?.symbol,
-        price: token?.derivedUSD,
-        price_BNB: token?.derivedBNB,
-      },
-    });
-  } catch (error) {
+    return200(res, { total: 0, data: {} });
+  } catch (error: any) {
     return500(res, error);
   }
 }
