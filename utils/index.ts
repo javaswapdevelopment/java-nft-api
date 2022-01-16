@@ -16,8 +16,6 @@ Moralis.start({ serverUrl, appId });
 // Moralis.Web3 = web3
 
 export async function getInfoNFTContract(address: string) {
-  // https://polygon-mainnet.infura.io/v3/2298daa8fd80468eb405781efd636b41
-
   const contract = new web3.eth.Contract(nftAbi as AbiItem[], address);
 
   const totalSupply = await contract.methods.totalSupply().call();
