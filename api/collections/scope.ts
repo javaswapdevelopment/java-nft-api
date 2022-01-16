@@ -3,7 +3,7 @@ import { return200, return400, return500 } from "../../utils/response";
 import contracts from "../../utils/constants/contracts";
 import { getInfoNFTContract, getTokenInfo } from "../../utils";
 import { getAddress } from "@ethersproject/address";
-import { filterByString } from "../../utils/filter";
+import { filterByString } from "../../utils/helper";
 
 export default async function (req: VercelRequest, res: VercelResponse): Promise<void> {
   if (

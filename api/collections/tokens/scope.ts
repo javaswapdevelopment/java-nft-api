@@ -3,7 +3,7 @@ import { return200, return400, return500 } from "../../../utils/response";
 import contracts from "../../../utils/constants/contracts";
 import { getTokenInfo } from "../../../utils";
 import { getAddress } from "@ethersproject/address";
-import { filterByString } from "../../../utils/filter";
+import { filterByString, getIPFSUrl } from "../../../utils/helper";
 
 export default async function (req: VercelRequest, res: VercelResponse): Promise<void> {
   if (
@@ -29,8 +29,8 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
       name: metaData.name,
       description: metaData.description,
       image: {
-        original: metaData.image,
-        thumbnail: metaData.image,
+        original: getIPFSUrl(metaData.image.substr(7)),
+        thumbnail: getIPFSUrl(metaData.image.substr(7)),
         mp4: null,
         webm: null,
         gif: null,
