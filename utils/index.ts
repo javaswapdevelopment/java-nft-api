@@ -26,13 +26,11 @@ export async function getInfoNFTContract(address: string) {
 
 export async function getAttributesContract(address: string) {}
 
-export async function getTokenInfo(address: string, tokenId: number) {
-  const contract = new web3.eth.Contract(nftAbi as AbiItem[], address);
+export async function getTokenInfo(address: string, tokenId: string) {
+  const options: any = { address: address, token_id: tokenId, chain: "polygon" };
+  const NFT = await Moralis.Web3API.token.getTokenIdMetadata(options);
 
-  const index = await contract.methods.tokenByIndex(tokenId).call();
-  const ipfsUrl = await contract.methods.tokenURI(index).call();
-
-  return ipfsUrl;
+  return NFT;
 }
 
 export async function getAllTokenInfo(address: string) {

@@ -15,6 +15,10 @@
       "destination": "/api/collections/tokens"
     },
     {
+      "source": "/api/collections/:address/tokens/:id",
+      "destination": "/api/collections/tokens/scope"
+    },
+    {
       "source": "/api/collections/:address/distribution",
       "destination": "/api/collections/distribution"
     }
