@@ -4,6 +4,7 @@ import contracts from "../../../utils/constants/contracts";
 import { getTokenInfo } from "../../../utils";
 import { getAddress } from "@ethersproject/address";
 import { filterByString, getIPFSUrl } from "../../../utils/helper";
+import { fetch } from "cross-fetch";
 
 export default async function (req: VercelRequest, res: VercelResponse): Promise<void> {
   if (
@@ -23,7 +24,12 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
     let scope: any = filterByString(nfts, address)[0];
 
     const data = await getTokenInfo(scope.address, id as string);
-    const metaData = JSON.parse(data.metadata as string);
+
+    let metaData = JSON.parse(data.metadata as string);
+    if (metaData == null) {
+      metaData = await (await fetch(data.token_uri as string)).json();
+    }
+
     let legacy: any = {
       tokenId: data.token_id,
       name: metaData.name,
