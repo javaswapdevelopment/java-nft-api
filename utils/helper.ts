@@ -5,5 +5,5 @@ export function filterByString(data: any, s: string) {
 }
 
 export function getIPFSUrl(ipfsHash: string) {
-  return `https://cloudflare-ipfs.com/ipfs/${ipfsHash}`;
+  return `https://ipfs.moralis.io:2053/ipfs/${ipfsHash}`;
 }
