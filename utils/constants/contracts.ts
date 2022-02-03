@@ -11,7 +11,7 @@ export default [
       small: "https://nft.javaswap.io/0x7b30339338Ea8d7e1eC85CD383807CD068dEfaF3/banner-sm.jpg",
     },
     createdAt: "2022-01-09T12:15:35.131Z",
-    updatedAt: "2022-01-09T12:15:35.131Z",
+    updatedAt: "2022-02-02T10:00:00.000Z",
     verified: true,
     totalSupply: null,
     symbol: null,
